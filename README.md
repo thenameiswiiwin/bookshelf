@@ -14,6 +14,7 @@ This project uses many tools like:
 - [Tailwindcss](https://tailwindcss.com)
 - [Eslint](https://eslint.org)
 - [Prettier](https://prettier.io)
+- [ReachUI](https://reach.tech/)
 
 ## Getting Started
 
