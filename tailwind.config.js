@@ -3,6 +3,9 @@
 module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    screens: {
+      'sm': {'max': '991px'}
+    },
     extend: {}
   },
   plugins: []
