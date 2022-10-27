@@ -1,9 +1,11 @@
+import { cloneElement } from 'react'
+
 interface LoginFormProps {
   onSubmit: any
-  buttonText: string
+  submitButton: React.ReactNode
 }
 
-function LoginForm({ onSubmit, buttonText }: LoginFormProps) {
+function LoginForm({ onSubmit, submitButton }: LoginFormProps) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const target = e.target as typeof e.target & {
@@ -35,12 +37,7 @@ function LoginForm({ onSubmit, buttonText }: LoginFormProps) {
           type="password"
         />
       </div>
-      <button
-        className="rounded border-0 bg-blue-600 py-2.5 px-4 leading-none text-white"
-        type="submit"
-      >
-        {buttonText}
-      </button>
+      <div>{cloneElement(submitButton, { type: 'submit' })}</div>
     </form>
   )
 }
