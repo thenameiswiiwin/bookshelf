@@ -1,22 +1,14 @@
 import { cloneElement } from 'react'
 import { FaSpinner } from 'react-icons/fa'
 
-interface LoginFormProps {
-  onSubmit: any
-  submitButton: React.ReactNode
-}
-
-function LoginForm({ onSubmit, submitButton }: LoginFormProps) {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+function LoginForm({ onSubmit, submitButton }) {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    const target = e.target as typeof e.target & {
-      username: { value: string }
-      password: { value: string }
-    }
+    const { username, password } = e.target.elements
 
     onSubmit({
-      username: target.username.value,
-      password: target.password.value
+      username: username.value,
+      password: password.value
     })
   }
 
