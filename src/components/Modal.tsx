@@ -1,4 +1,4 @@
-import {createContext, useState, useContext, cloneElement}  from 'react'
+import { createContext, useState, useContext, cloneElement } from 'react'
 import { VisuallyHidden } from '@reach/visually-hidden'
 import { Dialog } from '@reach/dialog'
 
@@ -46,7 +46,7 @@ function ModalContents({ title, children, ...props }) {
     <ModalContentsBase {...props}>
       <div className="flex justify-end">
         <ModalDismissButton>
-          <button className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-solid border-gray-500 bg-white p-0 leading-none">
+          <button className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-solid border-gray-500 bg-white p-0 leading-none hover:border-red-500">
             <VisuallyHidden>Close</VisuallyHidden>
             <span aria-hidden>×</span>
           </button>

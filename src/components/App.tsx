@@ -8,13 +8,13 @@ function App() {
   const register = (formData: string) => console.log('register', formData)
 
   return (
-    <div className="flex h-screen w-full flex-col items-center justify-center space-y-2">
+    <div className="flex h-screen w-full flex-col items-center justify-center space-y-3">
       <Logo width="80" height="80" />
       <h1 className="text-4xl font-semibold">Bookshelf</h1>
       <div className="grid grid-cols-2 gap-3">
         <Modal>
           <ModalOpenButton>
-            <button className="rounded border-0 bg-blue-600 py-2.5 px-4 leading-none text-white">
+            <button className="rounded border-0 bg-blue-600 py-2.5 px-4 leading-none text-white hover:bg-blue-700">
               Login
             </button>
           </ModalOpenButton>
@@ -22,7 +22,7 @@ function App() {
             <LoginForm
               onSubmit={login}
               submitButton={
-                <button className="rounded border-0 bg-blue-600 py-2.5 px-4 leading-none text-white">
+                <button className="rounded border-0 bg-blue-600 py-2.5 px-4 leading-none text-white hover:bg-blue-700">
                   Login
                 </button>
               }
@@ -31,7 +31,7 @@ function App() {
         </Modal>
         <Modal>
           <ModalOpenButton>
-            <button className="rounded border-0 bg-neutral-100 py-2.5 px-4 leading-none text-gray-600">
+            <button className="rounded border-0 bg-neutral-100 py-2.5 px-4 leading-none text-gray-600 hover:bg-neutral-200">
               Register
             </button>
           </ModalOpenButton>
@@ -39,7 +39,7 @@ function App() {
             <LoginForm
               onSubmit={register}
               submitButton={
-                <button className="rounded border-0 bg-neutral-100 py-2.5 px-4 leading-none text-gray-600">
+                <button className="rounded border-0 bg-neutral-100 py-2.5 px-4 leading-none text-gray-600 hover:bg-neutral-200">
                   Register
                 </button>
               }
