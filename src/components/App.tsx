@@ -4,8 +4,8 @@ import { Modal, ModalContents, ModalOpenButton } from './Modal'
 import { Logo } from './Logo'
 
 function App() {
-  const login = (formData: string) => console.log('login', formData)
-  const register = (formData: string) => console.log('register', formData)
+  const login = (formData) => console.log('login', formData)
+  const register = (formData) => console.log('register', formData)
 
   return (
     <div className="flex h-screen w-full flex-col items-center justify-center space-y-3">
