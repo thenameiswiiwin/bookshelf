@@ -1,36 +1,20 @@
+import { useState, useEffect } from 'react'
+import { client } from '../utils/api-client'
+import { useAsync } from '../utils/hooks'
 import { Tooltip } from '@reach/tooltip'
 import { FaSearch, FaTimes } from 'react-icons/fa'
 import Spinner from './Spinner'
 import BookRow from './BookRow'
-import { useState, useEffect } from 'react'
-import { client } from '../utils/api-client'
 
 function DiscoverBooksScreen() {
-  const [status, setStatus] = useState('idle')
-  const [data, setData] = useState(null)
+  const { data, error, run, isLoading, isError, isSuccess } = useAsync()
   const [query, setQuery] = useState('')
   const [queried, setQueried] = useState(false)
-  const [error, setError] = useState(null)
-
-  const isLoading = status === 'loading'
-  const isSuccess = status === 'success'
-  const isError = status === 'error'
 
   useEffect(() => {
     if (!queried) return
-    setStatus('loading')
-    client(`volumes?q=${encodeURIComponent(query)}`).then(
-      (data) => {
-        console.log(data)
-        setData(data)
-        setStatus('success')
-      },
-      (error) => {
-        setError(error)
-        setStatus('error')
-      }
-    )
-  }, [queried, query])
+    run(client(`volumes?q=${encodeURIComponent(query)}`))
+  }, [queried, query, run])
 
   const handleSearchSubmit = (e) => {
     e.preventDefault()
