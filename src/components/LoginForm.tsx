@@ -1,5 +1,5 @@
 import { cloneElement } from 'react'
-import { FaSpinner } from 'react-icons/fa'
+import Spinner from './Spinner'
 
 function LoginForm({ onSubmit, submitButton }) {
   const handleSubmit = (e) => {
@@ -32,7 +32,7 @@ function LoginForm({ onSubmit, submitButton }) {
       </div>
       <div className="flex items-center justify-center">
         {cloneElement(submitButton, { type: 'submit' })}
-        <FaSpinner className="ml-2 animate-spin" aria-label="loading" />
+        <Spinner />
       </div>
     </form>
   )
