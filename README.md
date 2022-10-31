@@ -16,6 +16,9 @@ This project uses many tools like:
 - [Prettier](https://prettier.io)
 - [ReachUI](https://reach.tech/)
 
+API:
+- [Google Books APIs](https://developers.google.com/books)
+
 ## Getting Started
 
 ### System Requirements
