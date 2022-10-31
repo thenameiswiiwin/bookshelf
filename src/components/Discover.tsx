@@ -1,5 +1,5 @@
 import { Tooltip } from '@reach/tooltip'
-import { FaSearch } from 'react-icons/fa'
+import { FaSearch, FaTimes } from 'react-icons/fa'
 import Spinner from './Spinner'
 import BookRow from './BookRow'
 import { useState, useEffect } from 'react'
@@ -10,18 +10,26 @@ function DiscoverBooksScreen() {
   const [data, setData] = useState(null)
   const [query, setQuery] = useState('')
   const [queried, setQueried] = useState(false)
+  const [error, setError] = useState(null)
 
   const isLoading = status === 'loading'
   const isSuccess = status === 'success'
+  const isError = status === 'error'
 
   useEffect(() => {
     if (!queried) return
     setStatus('loading')
-    client(`volumes?q=${encodeURIComponent(query)}`).then((data) => {
-      console.log(data)
-      setData(data)
-      setStatus('success')
-    })
+    client(`volumes?q=${encodeURIComponent(query)}`).then(
+      (data) => {
+        console.log(data)
+        setData(data)
+        setStatus('success')
+      },
+      (error) => {
+        setError(error)
+        setStatus('error')
+      }
+    )
   }, [queried, query])
 
   const handleSearchSubmit = (e) => {
@@ -44,11 +52,24 @@ function DiscoverBooksScreen() {
               type="submit"
               className="relative -ml-9 border-0 bg-transparent"
             >
-              {isLoading ? <Spinner /> : <FaSearch aria-label="search" />}
+              {isLoading ? (
+                <Spinner />
+              ) : isError ? (
+                <FaTimes aria-label="error" className="text-red-500" />
+              ) : (
+                <FaSearch aria-label="search" />
+              )}
             </button>
           </label>
         </Tooltip>
       </form>
+
+      {isError ? (
+        <div className="text-red-500">
+          <p>There was an error:</p>
+          <pre>{error.message}</pre>
+        </div>
+      ) : null}
 
       {isSuccess ? (
         data?.items?.length ? (

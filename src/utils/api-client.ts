@@ -6,7 +6,14 @@ function client(endpoint, customConfig = {}) {
 
   return window
     .fetch(`${import.meta.env.VITE_API_URL}/${endpoint}`, config)
-    .then((response) => response.json())
+    .then(async (res) => {
+      const data = await res.json()
+      if (res.ok) {
+        return data
+      } else {
+        return Promise.reject(data)
+      }
+    })
 }
 
 export { client }
