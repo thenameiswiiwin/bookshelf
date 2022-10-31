@@ -1,6 +1,8 @@
+import NoCover from '../assets/noCover.png'
+
 function BookRow({ book }) {
-  const { title, author, imageLinks, publisher } = book.volumeInfo
   const id = `book-row-book-${book.id}`
+  const { title, author, imageLinks, publisher, description } = book.volumeInfo
 
   return (
     <div className="relative flex items-center justify-end">
@@ -9,7 +11,10 @@ function BookRow({ book }) {
         className="flex min-h-[270] grow-2 gap-7 rounded border border-solid border-zinc-200 p-5 text-black hover:text-inherit hover:shadow-md hover:shadow-gray-500 focus:text-inherit focus:shadow-md focus:shadow-gray-500"
       >
         <div>
-          <img src={imageLinks.thumbnail} alt={`${title} book cover`} />
+          <img
+            src={!imageLinks ? NoCover : imageLinks.thumbnail}
+            alt={`${title} book cover`}
+          />
         </div>
         <div className="flex-1">
           <div className="flex justify-between">
@@ -23,7 +28,9 @@ function BookRow({ book }) {
               <small>{publisher}</small>
             </div>
           </div>
-          <small className="block">{book.volumeInfo.description.substring(0, 500)}...</small>
+          <small className="block">
+            {!description ? 'N/A' : `${description.substring(0, 500)}...`}
+          </small>
         </div>
       </div>
     </div>

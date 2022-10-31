@@ -18,6 +18,7 @@ function DiscoverBooksScreen() {
     if (!queried) return
     setStatus('loading')
     client(`volumes?q=${encodeURIComponent(query)}`).then((data) => {
+      console.log(data)
       setData(data)
       setStatus('success')
     })
