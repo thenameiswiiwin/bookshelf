@@ -1,5 +1,5 @@
 function BookRow({ book }) {
-  const { title, author, imageLinks, publisher, description } = book.volumeInfo
+  const { title, author, imageLinks, publisher } = book.volumeInfo
   const id = `book-row-book-${book.id}`
 
   return (
@@ -23,7 +23,7 @@ function BookRow({ book }) {
               <small>{publisher}</small>
             </div>
           </div>
-          <small className="block">{description}</small>
+          <small className="block">{book.volumeInfo.description.substring(0, 500)}...</small>
         </div>
       </div>
     </div>
