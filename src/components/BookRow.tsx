@@ -23,7 +23,7 @@ function BookRow({ book }) {
               <small>{publisher}</small>
             </div>
           </div>
-          <small className="block">{description.substring(0, 500)}...</small>
+          <small className="block">{description}</small>
         </div>
       </div>
     </div>
