@@ -14,16 +14,17 @@ function BookRow({ book }) {
           <img
             src={!imageLinks ? NoCover : imageLinks.thumbnail}
             alt={`${title} book cover`}
+            className="mx-auto w-32"
           />
         </div>
-        <div className="flex-1">
-          <div className="flex justify-between">
-            <div className="flex-1">
-              <h2 id={id} className="m-0 text-xl text-indigo-500">
+        <div className="flex-1 space-y-2">
+          <div className="grid grid-cols-2 gap-5">
+            <div>
+              <h2 id={id} className="m-0 text-xl font-bold text-indigo-500">
                 {title}
               </h2>
             </div>
-            <div className="ml-2.5">
+            <div className="ml-2.5 text-end">
               <div className="mt-2 text-sm italic">{author}</div>
               <small>{publisher}</small>
             </div>
