@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
-import { client } from '../utils/api-client'
-import { useAsync } from '../utils/hooks'
+import { client } from '../utils/apiCLient'
+import { useAsync } from '../utils/useAsync'
 import { Tooltip } from '@reach/tooltip'
 import { FaSearch, FaTimes } from 'react-icons/fa'
 import Spinner from './Spinner'
 import BookRow from './BookRow'
 
-function DiscoverBooksScreen() {
+function Discover() {
   const { data, error, run, isLoading, isError, isSuccess } = useAsync()
   const [query, setQuery] = useState('')
   const [queried, setQueried] = useState(false)
@@ -72,4 +72,4 @@ function DiscoverBooksScreen() {
   )
 }
 
-export default DiscoverBooksScreen
+export default Discover

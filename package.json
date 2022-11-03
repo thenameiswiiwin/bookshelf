@@ -17,6 +17,7 @@
     "typecheck": "tsc --project tsconfig.json --noEmit"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^1.12.0",
     "@reach/dialog": "^0.18.0",
     "@reach/tooltip": "^0.18.0",
     "@reach/visually-hidden": "^0.18.0",

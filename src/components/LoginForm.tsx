@@ -1,19 +1,26 @@
 import { cloneElement } from 'react'
+import { useAsync } from '../utils/useAsync'
 import Spinner from './Spinner'
 
 function LoginForm({ onSubmit, submitButton }) {
+  const { isLoading, isError, error, run } = useAsync()
   const handleSubmit = (e) => {
     e.preventDefault()
     const { username, password } = e.target.elements
 
-    onSubmit({
-      username: username.value,
-      password: password.value
-    })
+    run(
+      onSubmit({
+        username: username.value,
+        password: password.value
+      })
+    )
   }
 
   return (
-    <form className="flex flex-col items-center" onSubmit={handleSubmit}>
+    <form
+      className="flex w-full flex-col items-center justify-center"
+      onSubmit={handleSubmit}
+    >
       <div className="mx-auto my-2.5 flex w-full max-w-xs flex-col">
         <label htmlFor="username">Username</label>
         <input
@@ -31,9 +38,21 @@ function LoginForm({ onSubmit, submitButton }) {
         />
       </div>
       <div className="flex items-center justify-center">
-        {cloneElement(submitButton, { type: 'submit' })}
-        <Spinner />
+        {cloneElement(
+          submitButton,
+          { type: 'submit' },
+          ...(Array.isArray(submitButton.props.children)
+            ? submitButton.props.children
+            : [submitButton.props.children]),
+          isLoading ? <Spinner /> : null
+        )}
       </div>
+      {isError ? (
+        <div role="alert" className="mt-5 text-red-500">
+          <span>There was an error: </span>
+          <pre className="whitespace-pre-wrap">{error.message}</pre>
+        </div>
+      ) : null}
     </form>
   )
 }

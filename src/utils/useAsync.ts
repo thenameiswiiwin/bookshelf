@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect, useReducer, useCallback } from 'react'
+import { useCallback, useLayoutEffect, useReducer, useRef } from 'react'
 
 function useSafeDispatch(dispatch) {
   const mounted = useRef(false)
@@ -76,5 +76,5 @@ function useAsync(initialState) {
   }
 }
 
-export {useAsync}
+export { useAsync }
 

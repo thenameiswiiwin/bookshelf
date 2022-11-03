@@ -7,6 +7,9 @@ module.exports = {
       sm: { max: '991px' }
     },
     extend: {
+      gridTemplateColumns: {
+        'sm': 'repeat(1fr, 3fr)'
+      },
       flexGrow: {
         2: 2
       }
